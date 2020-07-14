@@ -1,0 +1,10 @@
+ChangePassword
+
+{
+
+    "name":"karim",
+    "oldPassword":"123456",
+    "newPassword":"1234567",
+    "confirmPassWord":"1234567"
+
+}

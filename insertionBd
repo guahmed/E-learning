@@ -1,0 +1,315 @@
+		Institut institut1 =new Institut();
+		institut1.setId((long) 1);
+		institut1.setAddress("24 rue Farhat Hachad , tunis");
+		institut1.setName("Ecole formation Tech-Web");
+		institutDao.save(institut1);
+
+		Place place1=new Place();
+		place1.setId((long) 1);
+		place1.setPlaceMaxCapacity(10);
+		place1.setPlaceReference("salle_1");
+		placeDao.save(place1);
+
+		Place place2=new Place();
+		place2.setId((long) 2);
+		place2.setPlaceMaxCapacity(10);
+		place2.setPlaceReference("salle_2");
+		placeDao.save(place2);
+
+		Place place3=new Place();
+		place3.setId((long) 3);
+		place3.setPlaceMaxCapacity(15);
+		place3.setPlaceReference("salle_3");
+		placeDao.save(place3);
+
+		Place place4=new Place();
+		place4.setId((long) 4);
+		place4.setPlaceMaxCapacity(10);
+		place4.setPlaceReference("salle_4");
+		placeDao.save(place4);
+
+		institut1.getPlaceList().add(place1);
+		institut1.getPlaceList().add(place2);
+		institut1.getPlaceList().add(place3);
+		institut1.getPlaceList().add(place4);
+		institutDao.save(institut1);
+
+		place1.setInstitut(institut1);
+		placeDao.save(place1);
+
+		place2.setInstitut(institut1);
+		placeDao.save(place2);
+
+		place3.setInstitut(institut1);
+		placeDao.save(place3);
+
+		place4.setInstitut(institut1);
+		placeDao.save(place4);
+		
+		
+		Agent agent1 =new Agent();
+		agent1.setId((long) 1);
+		agent1.setAdress("1 rue italy, tunis");
+		agent1.setAge(30);
+		agent1.setEmail("rami.benHasine@gmail.com");
+		agent1.setExperience("5 ans d expérience");
+		agent1.setIdCard("0599000");
+		agent1.setInstitut(institut1);
+		agent1.setLastName("Benhassine");
+		agent1.setName("Rami");
+		agent1.setRole("agent");
+		agent1.setPhoneNumber("96511224");
+		
+		byte[] photoAgent1 = 
+		Files.readAllBytes(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/agentPhoto/"+"rami-benhassine.png"));
+		agent1.setPhoto(BlobProxy.generateProxy(photoAgent1));
+		
+		agentDao.save(agent1);
+		
+		
+		Agent agent2 =new Agent();
+		agent2.setId((long) 2);
+		agent2.setAdress("1 rue Soudane, tunis");
+		agent2.setAge(26);
+		agent2.setEmail("Moez.Hajji@gmail.com");
+		agent2.setExperience("2 ans d expérience");
+		agent2.setIdCard("0599111");
+		agent2.setInstitut(institut1);
+		agent2.setLastName("Hajji");
+		agent2.setName("Moez");
+		agent2.setRole("agent");
+		agent2.setPhoneNumber("99611254");
+		
+		byte[] photoAgent2 = 
+		Files.readAllBytes(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/agentPhoto/"+"Moez-hajji.png"));
+		agent2.setPhoto(BlobProxy.generateProxy(photoAgent2));
+		agentDao.save(agent2);
+		
+		Agent agent3 =new Agent();
+		agent3.setId((long) 3);
+		agent3.setAdress("1 rue Algerie, tunis");
+		agent3.setAge(27);
+		agent3.setEmail("Imed.benothmen@gmail.com");
+		agent3.setExperience("3 ans d expérience");
+		agent3.setIdCard("0599241");
+		agent3.setInstitut(institut1);
+		agent3.setLastName("Benothmen");
+		agent3.setName("Imed");
+		agent3.setRole("agent");
+		agent3.setPhoneNumber("99665522");
+		
+		byte[] photoAgent3 = 
+		Files.readAllBytes(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/agentPhoto/"+"Imed-benothmen.png"));
+		agent2.setPhoto(BlobProxy.generateProxy(photoAgent3));
+		agentDao.save(agent3);
+		
+		
+		Agent agent4 =new Agent();
+		agent4.setId((long) 4);
+		agent4.setAdress("1 rue Libye, tunis");
+		agent4.setAge(28);
+		agent4.setEmail("sana.ghorbal@gmail.com");
+		agent4.setExperience("4 ans d expérience");
+		agent4.setIdCard("0698271");
+		agent4.setInstitut(institut1);
+		agent4.setLastName("Ghorbal");
+		agent4.setName("Sana");
+		agent4.setRole("agent");
+		agent4.setPhoneNumber("99665522");
+		
+		byte[] photoAgent4 = 
+		Files.readAllBytes(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/agentPhoto/"+"sana-ghorbal.png"));
+		agent2.setPhoto(BlobProxy.generateProxy(photoAgent4));
+		agentDao.save(agent4);
+		
+		institut1.getAgentList().add(agent1);
+		institut1.getAgentList().add(agent2);
+		institut1.getAgentList().add(agent3);
+		institut1.getAgentList().add(agent4);
+		institutDao.save(institut1);
+		
+		
+		
+		Manager manager1= new Manager();
+		manager1.setId((long) 1);
+		manager1.setAdress("1 rue turquie, tunis");
+		manager1.setAge(40);
+		manager1.setEmail("Souad.rhouma@gmail.com");
+		manager1.setExperience("10 ans d expérience");
+		manager1.setIdCard("0698521");
+		manager1.setInstitut(institut1);
+		manager1.setLastName("Souad");
+		manager1.setName("rhouma");
+		manager1.setRole("manager");
+		manager1.setPhoneNumber("99688454");
+		
+		byte[] photoManager1 = 
+		Files.readAllBytes(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/ManagerPhoto/"+"Souad-rhouma.png"));
+		manager1.setPhoto(BlobProxy.generateProxy(photoManager1));
+		
+		managerDao.save(manager1);
+		
+		institut1.setManagerInstitut(manager1);
+		institutDao.save(institut1);
+		
+		*****************************************
+		
+		Course course1 =new Course();
+		course1.setId( (long) 1);
+		course1.setCourseDate(new Date(2020-1900,06,27));
+		course1.setTimeLength(2);
+		course1.setObjectiveList("*chapitre 1 \n *chapitre 2");
+		course1.setDescription("pas de commentaires");
+		course1.setPlace(placeDao.findById((long) 1).get());
+		courseDao.save(course1);
+		
+		
+		Teacher teacher =new Teacher();
+		teacher.setId((long) 1);
+		teacher.setAdress("1 rue tazarka, tunis");
+		teacher.setAge(28);
+		teacher.setEmail("Ali.talbi@gmail.com");
+		teacher.setExperience("10 ans d expérience");
+		teacher.setIdCard("0678971");
+		teacher.setLastName("talbi");
+		teacher.setName("Ali");
+		teacher.setRole("teacehr");
+		teacher.setPhoneNumber("52113322");
+		byte[] phototeacher1 = 
+		Files.readAllBytes(Paths.get(Blob));
+		teacher.setPhoto(BlobProxy.generateProxy(phototeacher1));
+		teacherDao.save(teacher);
+		
+		
+		
+		Student Student1 =new Student();
+		Student1.setId((long) 1);
+		Student1.setAdress("1 Avenue de Carthage, tunis");
+		Student1.setAge(16);
+		Student1.setEmail("karimMokhtar@gmail.com");
+		Student1.setExperience("Etudiant en informatique");
+		Student1.setIdCard("0599001");
+		Student1.setLastName("Mokhtar");
+		Student1.setName("karim");
+		Student1.setRole("student");
+		Student1.setPhoneNumber("99611123");
+		
+		byte[] photoStudent1 = 
+		Files.readAllBytes(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/StudentPhoto/"+"karim-mokhtar.png"));
+		Student1.setPhoto(BlobProxy.generateProxy(photoStudent1));
+		studentDao.save(Student1);
+		
+		Student Student2 =new Student();
+		Student2.setId((long) 2);
+		Student2.setAdress("1 Avenue de la Liberté, Beja");
+		Student2.setAge(18);
+		Student2.setEmail("Moadh.Tayeb@gmail.com");
+		Student2.setExperience("Etudiant en informatique");
+		Student2.setIdCard("0599021");
+		Student2.setLastName("Moadh");
+		Student2.setName("Tayeb");
+		Student2.setRole("student");
+		Student2.setPhoneNumber("99881123");
+		
+		byte[] photoStudent2 = 
+		Files.readAllBytes(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/StudentPhoto/"+"MoadhTayeb.png"));
+		Student2.setPhoto(BlobProxy.generateProxy(photoStudent2));
+		studentDao.save(Student2);
+		
+		Student Student3 =new Student();
+		Student3.setId((long) 3);
+		Student3.setAdress("16 Rue de Palestine , Gafsa");
+		Student3.setAge(20);
+		Student3.setEmail("Nada.Toumi@gmail.com");
+		Student3.setExperience("Etudiant en informatique");
+		Student3.setIdCard("0599021");
+		Student3.setLastName("Toumi");
+		Student3.setName("Nada");
+		Student3.setRole("student");
+		Student3.setPhoneNumber("99781123");
+		
+		byte[] photoStudent3 = 
+		Files.readAllBytes(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/StudentPhoto/"+"Nada-Toumi.png"));
+		Student3.setPhoto(BlobProxy.generateProxy(photoStudent3));
+		studentDao.save(Student3);
+		
+		
+		Student Student4 =new Student();
+		Student4.setId((long) 4);
+		Student4.setAdress("28 Rue du Tribunal , Gafsa");
+		Student4.setAge(20);
+		Student4.setEmail("Nidhal.Ayadi@gmail.com");
+		Student4.setExperience("Etudiant en informatique");
+		Student4.setIdCard("0589721");
+		Student4.setLastName("Ayadi");
+		Student4.setName("Nidhal");
+		Student4.setRole("student");
+		Student4.setPhoneNumber("99789923");
+		
+		byte[] photoStudent4 = 
+		Files.readAllBytes(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/StudentPhoto/"+"Nidhal ayadi.png"));
+		Student4.setPhoto(BlobProxy.generateProxy(photoStudent4));
+		studentDao.save(Student4);
+		
+		
+		
+		
+		Session session1=new Session();
+		
+		session1.setId((long) 1);
+		session1.setName("Formaion Angular 8");
+		session1.setDescription("Créer une application web en JavaScript en partant de zéro, c’est possible, mais cela sera très long et fastidieux.");
+
+		session1.setStartingDate(new Date(2020-1900,06,20));
+		session1.setClosingDate(new Date(2020-1900,07,27));
+		session1.setHourNumber(40);
+		session1.setMaxStudentNumber(10);
+		session1.setPlan("Composants et services : @angular/core \n"
+				+ "Templating et data-binding : @angular/common \n"
+				+ "Routing : @angular/router");
+		
+		byte[] photoSession =
+				Files.readAllBytes
+				(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/SessionPhoto/"+"Angulatr8.png"));
+				
+		session1.setImage(BlobProxy.generateProxy(photoSession));
+		sessionDao.save(session1);
+		
+		
+	Session session2=new Session();
+		
+		session2.setId((long) 2);
+		session2.setName("Formaion Spring");
+		session2.setDescription("Spring Boot simplifie à l’extrême le démarrage, "
+				+ "la configuration et le déploiement d'un projet Spring.");
+		
+		
+		session2.setStartingDate(new Date(2020-1900,06,25));
+		session2.setClosingDate(new Date(2020-1900,07,24));
+		session2.setHourNumber(50);
+		session2.setMaxStudentNumber(10);
+		session2.setPlan("Les principales fonctionnalités \n" 
+				+ "Mise en œuvre de fonctionnalités \n"
+				+ "Une application Spring Boot\n"  
+				+ "La configuration des propriétés \n");
+		
+		byte[] photoSession1 =
+				Files.readAllBytes
+				(Paths.get("C:/Users/ahmed guetat/Documents/PhotoElearning/SessionPhoto/"+"Spring.png"));
+				
+		session2.setImage(BlobProxy.generateProxy(photoSession1));
+		sessionDao.save(session2);
+		
+		
+		
+		{
+    "name":"karim",
+    "OldPassword":"1234567",
+    "NewPassword":"1234567",
+    "ConfirmPassWord":"1234567"
+}
+		
+		
+		
+		
+		
