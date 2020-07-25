@@ -13,4 +13,5 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public interface StudentDao extends JpaRepository<Student ,Long >
 {
 	public Student findByName(String name);
+	public Student findByEmail(String email);
 }

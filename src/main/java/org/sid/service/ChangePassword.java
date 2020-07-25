@@ -25,15 +25,18 @@ public class ChangePassword implements Serializable{
 	@Autowired 
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	@Autowired
+	private GetLoggedUser getLoggedUser;
+	
 	@Transactional
 	public void CheckAndSavePassword
 	
-	(String name,String OldPassword,String NewPassword,
+	(String OldPassword,String NewPassword,
 			String ConfirmPassWord )   {
 		
 		//uncomplete must be changed to the logged Users
 		
-		Student student=studentDao.findByName(name);
+		Student student=studentDao.findByEmail(getLoggedUser.getuser());
 
 		if (bCryptPasswordEncoder.matches(OldPassword, student.getPassword())) {
 			System.out.println("I am here");

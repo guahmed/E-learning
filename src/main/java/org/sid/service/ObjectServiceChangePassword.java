@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 
 public class ObjectServiceChangePassword {
 	
-	private String name;
 	private String oldPassword;
 	private String newPassword;
 	private String confirmPassWord;

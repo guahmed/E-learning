@@ -8,4 +8,5 @@ import org.springframework.data.rest.core.annotation.RestResource;
 @RepositoryRestResource
 public interface AgentDao extends JpaRepository<Agent, Long>{
 
+	
 }

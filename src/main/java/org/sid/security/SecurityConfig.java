@@ -35,11 +35,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		// TODO Auto-generated method stub
 		//auth.inMemoryAuthentication().withUser("ahmed").password("{noop}123456").roles("Student");
 	   //
-		auth.inMemoryAuthentication().withUser("karim").password(bCryptPasswordEncoder.encode("1234567")).roles("ADMIN");
+		//auth.inMemoryAuthentication().withUser("karim").password(bCryptPasswordEncoder.encode("1234567")).roles("ADMIN");
 		
-		//auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+		auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
 		
-	System.out.print("pass"+bCryptPasswordEncoder.encode("123456")+"pass");
+	//System.out.print("pass"+bCryptPasswordEncoder.encode("123456")+"pass");
 	
 	}
 
@@ -54,14 +54,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		  //http.authorizeRequests().anyRequest().authenticated();
 		//*****************************  
 		  
-		  //http.csrf().disable();
-		// http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-	//	 http.authorizeRequests().antMatchers("/login/**").permitAll();
-	//	 http.authorizeRequests().antMatchers("/student/**").hasAuthority("student");
-	//	  http.authorizeRequests().anyRequest().authenticated();
+		 http.csrf().disable();
+		 http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		 http.authorizeRequests().antMatchers("/login/**").permitAll();
+		 http.authorizeRequests().antMatchers("/student/**").hasAuthority("student");
+		 http.authorizeRequests().anyRequest().authenticated();
 	  
-	//	  http.addFilter(new JWTAuthentificationFilter(authenticationManager()));
-	//	  http.addFilterBefore(new JWTAuthorizationFilter(),UsernamePasswordAuthenticationFilter.class);
+		 http.addFilter(new JWTAuthentificationFilter(authenticationManager()));
+		 http.addFilterBefore(new JWTAuthorizationFilter(),UsernamePasswordAuthenticationFilter.class);
 		  
 	  }
 	 

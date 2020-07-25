@@ -22,6 +22,8 @@ import org.sid.entites.Session;
 import org.sid.entites.Student;
 import org.sid.exception.ChangePasswordException;
 import org.sid.service.ChangePassword;
+import org.sid.service.GetLoggedUser;
+import org.sid.service.ModifyProfil;
 import org.sid.service.ObjectServiceChangePassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -71,7 +73,13 @@ public class ControllerStudent {
 	
 	@Autowired
 	private ChangePassword changePassword;
-
+	
+	@Autowired
+	private GetLoggedUser getLoggedUser;
+	
+	@Autowired 
+	private ModifyProfil modifyProfil;
+	
 	@PostMapping(path = "/subscribe/secondstep")
 	public String testsub(Model model, Student std) {
 
@@ -210,33 +218,33 @@ public class ControllerStudent {
 	@GetMapping("/aaa")
 	public String getuser(){
 		
-		Object principal = SecurityContextHolder.getContext().
-				getAuthentication().getPrincipal();
-
-		if (principal instanceof UserDetails) {
-			 String username = ((UserDetails)principal).getUsername();
-			 return username;
-		} else {
-			String username = principal.toString();
-			return username;
-		}	
+		return getLoggedUser.getuser();
 	
 	}
 	
 	
 	
 	
-	@GetMapping("/changePassword"  )
+	@PostMapping("/changePassword"  )
 	public void changePassword( 
 			@RequestBody ObjectServiceChangePassword objectServiceChangePassword  )
 	{
 		System.out.print(objectServiceChangePassword.toString());
 		
-		changePassword.CheckAndSavePassword(objectServiceChangePassword.getName()
-				, objectServiceChangePassword.getOldPassword()
+		changePassword.CheckAndSavePassword(
+				  objectServiceChangePassword.getOldPassword()
 				, objectServiceChangePassword.getNewPassword()
 				, objectServiceChangePassword.getConfirmPassWord());
 	}
+	
+	@PostMapping("/editProfil"  )
+	public void changePassword( 
+			@RequestBody Student student  )
+	{
+		modifyProfil.ModifyProfilStudent(student);
+		
+	}
+	
 	
 	
 }

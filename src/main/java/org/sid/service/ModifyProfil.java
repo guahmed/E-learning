@@ -13,11 +13,25 @@ public class ModifyProfil {
 	@Autowired
 	private StudentDao studentDao;
 	
+	@Autowired
+	private GetLoggedUser getLoggedUser;
+	
+	
 	@Transactional
-	public void ModifyProfilStudent(@RequestBody Student studentAfter) {
+	public void ModifyProfilStudent(Student studentAfter) {
 		
-		 
 		
+		Student student= studentDao.findByEmail(getLoggedUser.getuser());
+		
+		student.setName(studentAfter.getName());
+		student.setLastName(studentAfter.getLastName());
+		student.setAge(studentAfter.getAge());
+		student.setIdCard(studentAfter.getIdCard());
+		student.setAdress(studentAfter.getAdress());
+		student.setPhoneNumber(studentAfter.getPhoneNumber());
+		student.setExperience(studentAfter.getExperience());
+		
+		studentDao.save(student);
 	}
 	
 }

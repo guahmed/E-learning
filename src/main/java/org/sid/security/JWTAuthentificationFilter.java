@@ -56,7 +56,7 @@ public class JWTAuthentificationFilter extends UsernamePasswordAuthenticationFil
 				authenticationManager.
 					authenticate
 						(new UsernamePasswordAuthenticationToken
-								(student.getName(), student.getPassword())));
+								(student.getEmail(), student.getPassword())));
 		
 	}
 	

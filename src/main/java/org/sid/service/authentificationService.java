@@ -26,7 +26,7 @@ public class authentificationService implements UserDetailsService {
 			throws UsernameNotFoundException {
 		
 	
-		Student student = studentDao.findByName(username);
+		Student student = studentDao.findByEmail(username);
 		if (student==null) throw new UsernameNotFoundException(username);
 		
 		
@@ -35,7 +35,7 @@ public class authentificationService implements UserDetailsService {
 		Collection<GrantedAuthority> authorities= new ArrayList<>();
 		authorities.add(simpleGrantedAuthority);
 		
-		User user=new User(student.getName(),student.getPassword(),authorities);
+		User user=new User(student.getEmail(),student.getPassword(),authorities);
 		
 		return user ;		
 		
